@@ -9,8 +9,9 @@ function App() {
     setLoading(true);
     setResult(null);
     try {
-        // Assuming backend runs on port 3000
-        const response = await fetch('http://localhost:3000/api/interpret', {
+        // Backend runs on port 3000
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3000';
+        const response = await fetch(`${backendUrl}/api/interpret`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
